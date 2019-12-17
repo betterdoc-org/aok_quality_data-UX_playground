@@ -1,0 +1,326 @@
+#
+# This configuration file defines which ICD and OPS codes will trigger the display of 
+# AOK Quality data (Bäumchen) within the clinic site search in PARC Medic.
+# 
+# Background is that the clinic site search uses ICD or OPS codes to find clinic sites with 
+# a high number of cases.
+# AOK delivers data about the quality of clinics (NOT clinic sites!) related to a set of
+# categories that differ from ICD and OPS codes.
+#
+# This files contains the mapping of ICD and OPS codes to the AOK categories, enabling us to show
+# the relevant AOK quality data when clinic site search shows results for an OPS or ICD code.
+#
+# The first entry in this file is commented to help to understand the format.
+#
+# Please note that this file needs to fufill certain formatting 
+
+
+categories:
+# name of the AOK categorie, 1:1 as used in the source file (XLS) for the tab title
+  - ui_name: Hüft-TEP
+# String in the UI of the AOK Weisse Liste, which is relevant for the respective codes. When multiple scores are shown, take the score with ths name.
+    weisse_liste_name: Hüftgelenkersatz bei Gelenkverschleiß (Arthrose)
+# query params for the URL
+    search_hospital_param: Operatives Einsetzen eines künstlichen Hüftgelenks
+    search_key_param: 5-822
+# The number of points the clinic a site blongs to needs to have to be shown in the results. Default is no filtering.
+# This key is optional, if not set, no filter is applied by default.
+    filter_out_below: 3
+# this marks the start of the part where ICD and OPS codes that should trigger the display of the AOK data
+    codes: 
+# Codes listed here will show quality data for this AOK category
+      include: 
+# A '* marks a wildcard, matching all sub codes.
+# Wildcards can only appear at the end of a code 
+        - 5-820*
+        - 5-821*
+        - S72*
+# Codes listed here will NOT show quality data for this AOK category
+      exclude: []
+      
+  - ui_name: Knie-TEP
+    weisse_liste_name: Kniegelenkersatz bei Gelenkverschleiß (Arthrose)
+    search_hospital_param: Operatives Einsetzen eines künstlichen Kniegelenks
+    search_key_param: 5-822
+    filter_out_below: 3
+    codes:
+      include: 
+        - 5-822*
+        - 5-823*
+      exclude: []
+
+  - ui_name: Hüft-TEP Wechsel
+    weisse_liste_name: Hüftprothesenwechsel (nicht bei Knochenbruch oder Infektion)
+    search_hospital_param: Erneute Operation, Wechsel bzw. Entfernung eines künstlichen Hüftgelenks
+    search_key_param: 5-821
+    filter_out_below: 2
+    codes:
+      include: 
+        - 5-821*
+      exclude: []
+
+  - ui_name: OP bei hüftgelenknahem Oberschenkelbruch
+    weisse_liste_name: Operation bei hüftgelenknahem Oberschenkelbruch
+    search_hospital_param: Knochenbruch des Oberschenkels
+    search_key_param: S72
+    filter_out_below: 2
+    codes:
+      include:
+        - S72*
+        - 5-799*
+        # 5-790
+        - 5-790.0e
+        - 5-790.0f
+        - 5-790.0g
+        - 5-790.0h
+        - 5-790.1e
+        - 5-790.1f
+        - 5-790.1g
+        - 5-790.1h
+        - 5-790.2e
+        - 5-790.2f
+        - 5-790.2g
+        - 5-790.2h
+        - 5-790.3e
+        - 5-790.3f
+        - 5-790.3g
+        - 5-790.3h
+        - 5-790.4e
+        - 5-790.4f
+        - 5-790.4g
+        - 5-790.4h
+        - 5-790.5e
+        - 5-790.5f
+        - 5-790.5g
+        - 5-790.5h
+        - 5-790.6e
+        - 5-790.6f
+        - 5-790.6g
+        - 5-790.6h
+        - 5-790.7e
+        - 5-790.7f
+        - 5-790.7g
+        - 5-790.7h
+        - 5-790.8e
+        - 5-790.8f
+        - 5-790.8g
+        - 5-790.8h
+        - 5-790.9e
+        - 5-790.9f
+        - 5-790.9g
+        - 5-790.9h
+        - 5-790.ce
+        - 5-790.cf
+        - 5-790.cg
+        - 5-790.ch
+        - 5-790.de
+        - 5-790.df
+        - 5-790.dg
+        - 5-790.dh
+        - 5-790.ke
+        - 5-790.kf
+        - 5-790.kg
+        - 5-790.kh
+        - 5-790.mf
+        - 5-790.mg
+        - 5-790.mh
+        - 5-790.ne
+        - 5-790.nf
+        - 5-790.ng
+        - 5-790.nh
+        - 5-790.pe
+        - 5-790.pf
+        - 5-790.pg
+        - 5-790.ph
+        - 5-790.xe
+        - 5-790.xf
+        - 5-790.xg
+        - 5-790.xh
+        # 5-793
+        - 5-793.0e
+        - 5-793.0f
+        - 5-793.0h
+        - 5-793.1e
+        - 5-793.1f
+        - 5-793.1h
+        - 5-793.2e
+        - 5-793.2f
+        - 5-793.2h
+        - 5-793.3e
+        - 5-793.3f
+        - 5-793.3h
+        - 5-793.4e
+        - 5-793.4f
+        - 5-793.4h
+        - 5-793.5e
+        - 5-793.5f
+        - 5-793.5h
+        - 5-793.6e
+        - 5-793.6f
+        - 5-793.6h
+        - 5-793.7e
+        - 5-793.7f
+        - 5-793.7h
+        - 5-793.8e
+        - 5-793.8f
+        - 5-793.8h
+        - 5-793.9e
+        - 5-793.9f
+        - 5-793.9h
+        - 5-793.ae
+        - 5-793.af
+        - 5-793.ah
+        - 5-793.be
+        - 5-793.bf
+        - 5-793.bh
+        - 5-793.ce
+        - 5-793.cf
+        - 5-793.ch
+        - 5-793.ef
+        - 5-793.eh
+        - 5-793.ge
+        - 5-793.gf
+        - 5-793.gh
+        - 5-793.he
+        - 5-793.hf
+        - 5-793.hh
+        - 5-793.ke
+        - 5-793.kf
+        - 5-793.kh
+        - 5-793.me
+        - 5-793.mf
+        - 5-793.mh
+        - 5-793.ne
+        - 5-793.nf
+        - 5-793.nh
+        - 5-793.xe
+        - 5-793.xf
+        - 5-793.xh
+        # 5-794
+        - 5-794.0e
+        - 5-794.0f
+        - 5-794.0h
+        - 5-794.1e
+        - 5-794.1f
+        - 5-794.1h
+        - 5-794.2e
+        - 5-794.2f
+        - 5-794.2h
+        - 5-794.3e
+        - 5-794.3f
+        - 5-794.3h
+        - 5-794.4e
+        - 5-794.4f
+        - 5-794.4h
+        - 5-794.5e
+        - 5-794.5f
+        - 5-794.5h
+        - 5-794.6e
+        - 5-794.6f
+        - 5-794.6h
+        - 5-794.7e
+        - 5-794.7f
+        - 5-794.7h
+        - 5-794.8e
+        - 5-794.8f
+        - 5-794.8h
+        - 5-794.ae
+        - 5-794.af
+        - 5-794.ah
+        - 5-794.be
+        - 5-794.bf
+        - 5-794.bh
+        - 5-794.ce
+        - 5-794.cf
+        - 5-794.ch
+        - 5-794.ef
+        - 5-794.eh
+        - 5-794.ge
+        - 5-794.gf
+        - 5-794.gh
+        - 5-794.he
+        - 5-794.hf
+        - 5-794.hh
+        - 5-794.ke
+        - 5-794.kf
+        - 5-794.kh
+        - 5-794.me
+        - 5-794.mf
+        - 5-794.mh
+        - 5-794.ne
+        - 5-794.nf
+        - 5-794.nh
+        - 5-794.xe
+        - 5-794.xf
+        - 5-794.xh
+      exclude: []
+
+  - ui_name: Appendektomie
+    weisse_liste_name: Blinddarmentfernung (Appendektomie)
+    search_key_param: 5-470
+    search_hospital_param: Operative Entfernung des Blinddarms
+    codes: 
+      include: 
+        - 5-470*
+        - 5-471*
+        - 5-479*
+        - K35*
+        - K36*
+        - K37*
+        - K38*
+      exclude: []
+
+#Gallenblasenentfernung bei Gallensteinen
+  - ui_name: Cholezystektomie
+    weisse_liste_name: Gallenblasenentfernung bei Gallensteinen
+    search_key_param: 5-511
+    search_hospital_param: Operative Entfernung der Gallenblase
+    codes:
+      include: 
+        - 5-511*
+        - K80*
+      exclude: []
+
+  - ui_name: Verschluss Leistenhernie
+    weisse_liste_name: Verschluss eines Leistenbruchs
+    search_key_param: 5-530
+    search_hospital_param: Operativer Verschluss eines Leistenbruchs (Hernie)
+    codes:
+      include:
+        - 5-530*
+        - K40*
+      exclude: []
+
+  - ui_name: Herzkatheter bei Patienten ohne Herzinfarkt
+    weisse_liste_name: Therapeutischer Herzkatheter (PCI) bei Patienten ohne Herzinfarkt
+    search_key_param: 8-837
+    search_hospital_param: Behandlung am Herzen bzw. den Herzkranzgefäßen mit Zugang über einen Schlauch (Katheter) entlang der Blutgefäße
+    codes:
+      include:
+        - Z94.1
+        - I22*
+        - 8-837*
+        - 8-83d*
+      exclude: []
+
+  - ui_name: Prostataoperation bei BPH
+    weisse_liste_name: Operation bei gutartiger Prostatavergrößerung 
+    search_key_param: 5-601
+    search_hospital_param: Operative Entfernung oder Zerstörung von Gewebe der Prostata durch die Harnröhre
+    codes:
+      include:
+        - N40*
+        - 5-601*
+        - 5-603*
+      exclude: []
+
+  - ui_name: Radikale Prostatektomie bei PCa
+    weisse_liste_name: Vollständige Prostataentfernung bei Prostatakrebs
+    search_key_param: 6-604
+    search_hospital_param: Operative Entfernung der Prostata, der Samenblase und der dazugehörigen Lymphknoten
+    codes:
+      include:
+        - C61*
+        - 5-604*
+      exclude: []
+
